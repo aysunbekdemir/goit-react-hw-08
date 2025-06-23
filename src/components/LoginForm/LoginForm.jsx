@@ -1,11 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
+import { logIn } from '../../redux/auth/operations';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const initialValues = { email: '', password: '' };
 
   const handleSubmit = (values, { resetForm }) => {
-    // Giriş işlemi burada yapılacak (dispatch ile)
+    dispatch(logIn(values));
     resetForm();
   };
 
